@@ -1,0 +1,37 @@
+name: Generate PHP Documentation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+
+    - name: Install composer dependencies
+      run: composer install --no-progress --no-suggest --prefer-dist
+
+    - name: Install phpDocumentor
+      run: composer require --dev phpdocumentor/phpdocumentor
+
+    - name: Generate documentation
+      run: vendor/bin/phpdoc -d project -t docs/api
+
+    - name: Upload documentation artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: php-documentation
+        path: docs/api
