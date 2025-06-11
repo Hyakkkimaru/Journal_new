@@ -1,0 +1,20 @@
+@startuml
+' Диаграмма последовательности: Регистрация и учет учеников
+
+actor Регистратура
+participant "Клиент (браузер)" as Client
+participant "Веб-сервер (PHP)" as WebServer
+participant "База данных (MySQL)" as Database
+
+Регистратура -> Client : Запрос формы регистрации
+Client -> WebServer : Запрос формы
+WebServer -> Client : Отправка формы
+
+Регистратура -> Client : Заполнение и отправка данных ученика
+Client -> WebServer : Отправка данных
+
+WebServer -> Database : Добавление данных ученика
+Database --> WebServer : Результат операции
+
+WebServer -> Client : Подтверждение успешной операции или ошибка
+@enduml

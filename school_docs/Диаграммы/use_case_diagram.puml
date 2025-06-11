@@ -1,0 +1,36 @@
+@startuml
+' Диаграмма вариантов использования системы электронного школьного журнала
+
+skinparam usecase {
+  BackgroundColor<<Admin>> LightBlue
+  BackgroundColor<<Teacher>> LightGreen
+  BackgroundColor<<Student>> LightYellow
+  BackgroundColor<<RegistrarOffice>> LightPink
+  BorderColor Black
+  FontName Arial
+}
+
+actor Администратор <<Admin>>
+actor Учитель <<Teacher>>
+actor Ученик <<Student>>
+actor Регистратура <<RegistrarOffice>>
+
+usecase "Вход в систему" as UC_Login
+usecase "Управление данными" as UC_ManageData
+usecase "Ведение оценок" as UC_Grade
+usecase "Просмотр информации" as UC_ViewInfo
+usecase "Регистрация учеников" as UC_Register
+
+Администратор --> UC_Login
+Администратор --> UC_ManageData
+
+Учитель --> UC_Login
+Учитель --> UC_Grade
+
+Ученик --> UC_Login
+Ученик --> UC_ViewInfo
+
+Регистратура --> UC_Login
+Регистратура --> UC_Register
+
+@enduml

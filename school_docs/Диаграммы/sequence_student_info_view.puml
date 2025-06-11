@@ -1,0 +1,15 @@
+@startuml
+' Диаграмма последовательности: Просмотр информации учеником
+
+actor Ученик
+participant "Клиент (браузер)" as Client
+participant "Веб-сервер (PHP)" as WebServer
+participant "База данных (MySQL)" as Database
+
+Ученик -> Client : Запрос информации
+Client -> WebServer : Запрос данных
+WebServer -> Database : Получение информации
+Database --> WebServer : Данные
+WebServer -> Client : Отправка информации
+Client -> Ученик : Отображение информации
+@enduml

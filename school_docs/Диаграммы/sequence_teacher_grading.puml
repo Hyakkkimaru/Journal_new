@@ -1,0 +1,20 @@
+@startuml
+' Диаграмма последовательности: Ведение оценок учителем
+
+actor Учитель
+participant "Клиент (браузер)" as Client
+participant "Веб-сервер (PHP)" as WebServer
+participant "База данных (MySQL)" as Database
+
+Учитель -> Client : Запрос формы выставления оценок
+Client -> WebServer : Запрос формы
+WebServer -> Client : Отправка формы
+
+Учитель -> Client : Заполнение и отправка оценок
+Client -> WebServer : Отправка данных оценок
+
+WebServer -> Database : Сохранение оценок
+Database --> WebServer : Результат операции
+
+WebServer -> Client : Подтверждение успешной операции или ошибка
+@enduml

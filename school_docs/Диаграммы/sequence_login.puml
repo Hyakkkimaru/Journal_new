@@ -1,0 +1,18 @@
+@startuml
+' Диаграмма последовательности: Вход пользователя в систему
+
+actor Пользователь
+participant "Клиент (браузер)" as Client
+participant "Веб-сервер (PHP)" as WebServer
+participant "База данных (MySQL)" as Database
+
+Пользователь -> Client : Ввод логина и пароля
+Client -> WebServer : Отправка данных аутентификации
+WebServer -> Database : Проверка учетных данных
+Database --> WebServer : Результат проверки
+alt Успешная аутентификация
+    WebServer -> Client : Успешный вход, загрузка интерфейса
+else Ошибка аутентификации
+    WebServer -> Client : Сообщение об ошибке
+end
+@enduml

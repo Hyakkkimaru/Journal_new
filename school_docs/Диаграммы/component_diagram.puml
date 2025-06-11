@@ -1,0 +1,24 @@
+@startuml
+' Диаграмма компонентов системы электронного школьного журнала
+
+skinparam componentStyle rectangle
+skinparam defaultFontName "Arial"
+
+package "Система" {
+  [Административный модуль] as Admin
+  [Модуль учителей] as Teacher
+  [Модуль учеников] as Student
+  [Модуль регистратуры] as RegistrarOffice
+  [Веб-сервер (PHP)] as WebServer
+  [Клиентская часть (HTML, CSS)] as Client
+  [База данных (MySQL)] as Database
+}
+
+Client --> WebServer : HTTP запросы
+WebServer --> Admin : Обработка запросов админа
+WebServer --> Teacher : Обработка запросов учителя
+WebServer --> Student : Обработка запросов ученика
+WebServer --> RegistrarOffice : Обработка запросов регистратуры
+WebServer --> Database : Запросы к базе данных
+
+@enduml

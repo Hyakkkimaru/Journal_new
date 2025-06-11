@@ -1,0 +1,20 @@
+@startuml
+' Диаграмма последовательности: Добавление/редактирование данных администратором
+
+actor Администратор
+participant "Клиент (браузер)" as Client
+participant "Веб-сервер (PHP)" as WebServer
+participant "База данных (MySQL)" as Database
+
+Администратор -> Client : Запрос формы добавления/редактирования
+Client -> WebServer : Запрос формы
+WebServer -> Client : Отправка формы
+
+Администратор -> Client : Заполнение и отправка формы
+Client -> WebServer : Отправка данных
+
+WebServer -> Database : Добавление/обновление данных
+Database --> WebServer : Результат операции
+
+WebServer -> Client : Подтверждение успешной операции или ошибка
+@enduml
