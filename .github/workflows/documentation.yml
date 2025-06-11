@@ -31,7 +31,7 @@ jobs:
       run: vendor/bin/phpdoc -d project -t docs/api
 
     - name: Upload documentation artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: php-documentation
         path: docs/api
