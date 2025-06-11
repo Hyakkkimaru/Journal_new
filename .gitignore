@@ -1,0 +1,31 @@
+# Ignore composer dependencies
+/vendor/
+/composer.lock
+
+# Ignore logs and cache
+/logs/
+/cache/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files
+.vscode/
+.idea/
+
+# Ignore documentation output folder
+/docs/
+
+# Ignore environment files
+.env
+.env.local
+.env.*.local
+
+# Ignore node modules if any
+/node_modules/
+
+# Ignore generated files
+*.log
+*.cache
+*.tmp
